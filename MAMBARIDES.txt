@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mamba Rides</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background-color: #006400;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #004d00;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.5rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+      background: white;
+      margin: 1rem auto;
+      max-width: 900px;
+      border-radius: 10px;
+    }
+    .fleet img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #006400;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .contact a {
+      color: #006400;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #006400;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004d00;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mamba Rides</h1>
+    <p>Safe. Swift. Reliable.</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#fleet">Our Fleet</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+    <a href="#booking">Book Now</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Mamba Rides</h2>
+    <p>Looking for comfortable and reliable transport? Our 18-seater Mamba cars are available for hire now. We serve you with comfort, safety, and affordability. Book a ride today!</p>
+  </section>
+
+  <section id="fleet" class="fleet">
+    <h2>Our Fleet</h2>
+    <p>We currently have 4 well-maintained Mamba 18-seater vehicles available for group transport, events, or business trips.</p>
+    <img src="https://via.placeholder.com/800x400?text=Mamba+Car+1" alt="Mamba Car" />
+    <ul>
+      <li>Mamba 1 – Clean, Comfortable, AC Included</li>
+      <li>Mamba 2 – Spacious, Great Sound System</li>
+      <li>Mamba 3 – Perfect for Events</li>
+      <li>Mamba 4 – Reliable and Efficient</li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Mamba Rides is a family-owned transport business started by Mr. Kaguamba in Murang’a County. Our mission is to offer safe, reliable, and affordable transport solutions using our four 18-seater vans named "Mamba." We proudly offer full-service transport across all of Kenya. Whether you’re heading to a wedding, a trip with friends, or business travel, we’ve got you covered.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>📞 Main Line: <a href="tel:+254723471414">0723 471 414</a></p>
+    <p>📞 Other Number: <a href="tel:+254700508114">0700 508 114</a></p>
+    <p>💬 WhatsApp: <a href="https://wa.me/254723471414" target="_blank">Chat with us</a></p>
+    <p>✉️ Email: <a href="mailto:mambarides@gmail.com">mambarides@gmail.com</a></p>
+  </section>
+
+  <section id="booking">
+    <h2>Book a Ride</h2>
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="date" id="date" required />
+      <input type="text" id="pickup" placeholder="Pickup Location" required />
+      <input type="text" id="destination" placeholder="Destination" required />
+      <input type="time" id="time" required />
+      <textarea id="notes" placeholder="Additional Notes (Optional)"></textarea>
+      <button type="submit">Send Booking via WhatsApp</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mamba Rides. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event){
+      event.preventDefault();
+
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+      const date = encodeURIComponent(document.getElementById('date').value);
+      const pickup = encodeURIComponent(document.getElementById('pickup').value.trim());
+      const destination = encodeURIComponent(document.getElementById('destination').value.trim());
+      const time = encodeURIComponent(document.getElementById('time').value);
+      const notes = encodeURIComponent(document.getElementById('notes').value.trim());
+
+      let message = `*Mamba Rides Booking*%0A`;
+      message += `Name: ${name}%0A`;
+      message += `Phone: ${phone}%0A`;
+      message += `Date: ${date}%0A`;
+      message += `Pickup: ${pickup}%0A`;
+      message += `Destination: ${destination}%0A`;
+      message += `Time: ${time}%0A`;
+      if(notes) {
+        message += `Notes: ${notes}%0A`;
+      }
+
+      const whatsappNumber = '254700508114'; // Kenya number without the leading 0
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+</body>
+</html>
